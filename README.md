@@ -1,4 +1,4 @@
-<h1> Une application gestion de caisse avec bootstrap et laravel </h1> br>
+<h1> Une application gestion de caisse avec bootstrap et laravel </h1> <br>
  
 => Setup .env file :
 --------------------
