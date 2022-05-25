@@ -11,6 +11,7 @@
     <li>Run cmd inside the path of the folder</li>
     <li>Run the cmd : <strong>composer install</strong></li>
     <li>In ps or bash run this cmd :<strong>cp .env.example .env</strong></li>
+    <li>Generate an app encryption key: <strong>php artisan key:generate</strong></li>
     <li>Create a database : gestioncaisse as default or you can edit the <strong>.env</strong> file and set any name you want</li>
     <li>Run this cmd : <strong>php artisan migrate</strong></li>
     <li>Run this cmd : <strong>php artisan serve</strong></li>
