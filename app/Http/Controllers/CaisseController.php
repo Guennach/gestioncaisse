@@ -83,8 +83,11 @@ class CaisseController extends Controller
     public function edit($id)
     {
         //
-        $caisse = Caisse::find($id);
-        return view('caisse.edit',compact('caisse'));
+        if (Auth::check()) {
+            $caisse = Caisse::find($id);
+            return view('caisse.edit',compact('caisse'));
+        }else
+            return view('auth.login')->with('alert','Login required !!');
     }
 
     /**
@@ -96,14 +99,18 @@ class CaisseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $caisse = Caisse::find($id);
-        $caisse->date = $request->input('date');
-        $caisse->libelle = $request->input('libelle');
-        $caisse->recettes = $request->input('recettes');
-        $caisse->depenses = $request->input('depenses');
-        $caisse->solde = $request->input('solde');
-        $caisse->update();
-        return redirect()->route('caisse.index')->with('success','La transaction est mis à jour avec succès');
+        if (Auth::check()) {
+            $caisse = Caisse::find($id);
+            $caisse->date = $request->input('date');
+            $caisse->libelle = $request->input('libelle');
+            $caisse->recettes = $request->input('recettes');
+            $caisse->depenses = $request->input('depenses');
+            $caisse->solde = $request->input('solde');
+            $caisse->update();
+            return redirect()->route('caisse.index')->with('success','La transaction est mis à jour avec succès');
+        }else{
+            return view('auth.login')->with('alert','Login required !!');
+        }
     }
 
     /**
@@ -115,9 +122,12 @@ class CaisseController extends Controller
     public function destroy(Caisse $caisse)
     {
         //
-        $caisse->delete();
-
-        return redirect()->route('caisse.index')->with('success','La transaction est supprimée avec succès');
+        if (Auth::check()) {
+            $caisse->delete();
+            return redirect()->route('caisse.index')->with('success','La transaction est supprimée avec succès');
+        }else{
+            return view('auth.login')->with('alert','Login required !!');
+        }
     }
 
     /**
@@ -126,14 +136,15 @@ class CaisseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function filter(Request $request)
     {
         $caisse = $request->all();
         if($caisse['start_date'] && $caisse['end_date']){
             $startDate = $caisse['start_date'];
             $endDate = $caisse['end_date'];
-            $products = DB::table('caisses')->whereBetween(\DB::raw('DATE(date)'), [$startDate, $endDate])->get();
-            return view('caisse.filter',compact('caisse'),compact('products'));
+            $transactions = DB::table('caisses')->whereBetween(\DB::raw('DATE(date)'), [$startDate, $endDate])->get();
+            return view('caisse.filter',compact('caisse'),compact('transactions'));
         }else
             return redirect(url()->previous())->with('alert','Please provide us with a start and end date to filter !!!!!!');
     }

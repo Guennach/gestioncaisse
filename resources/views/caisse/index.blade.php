@@ -1,6 +1,7 @@
 @extends('caisse.layout')
 <?php $solde_total = 0 ?>
 @section('content')
+
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
@@ -25,9 +26,9 @@
     <div class="my-2">
         <form action="{{ url('filter') }}" method="GET">
             <div class="input-group mb-3">
-                <input type="date" class="form-control" name="start_date">
-                <input type="date" class="form-control" name="end_date">
-                <button class="btn btn-primary" type="submit">GET</button>
+                <input type="date" class="form-control" name="start_date" >
+                <input type="date" class="form-control" name="end_date" >
+                <button class="btn btn-primary" type="submit">filtrer</button>
             </div>
         </form>
     </div>
