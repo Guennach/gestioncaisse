@@ -50,9 +50,9 @@ class CaisseController extends Controller
         $request->validate([
             'libelle' => 'required',
             'date' => 'required',
-            'recettes' => 'required',
-            'depenses' => 'required',
-            'solde' => 'required'
+            'recettes' => 'required|numeric',
+            'depenses' => 'required|numeric',
+            'solde' => 'required|numeric'
         ]);
 
         //create a new  in the
@@ -99,7 +99,18 @@ class CaisseController extends Controller
      */
     public function update(Request $request, $id)
     {
+       
+
         if (Auth::check()) {
+             //Validate the input
+             $request->validate([
+                'libelle' => 'required',
+                'date' => 'required',
+                'recettes' => 'required|numeric',
+                'depenses' => 'required|numeric',
+                'solde' => 'required|numeric'
+            ]);
+            
             $caisse = Caisse::find($id);
             $caisse->date = $request->input('date');
             $caisse->libelle = $request->input('libelle');
