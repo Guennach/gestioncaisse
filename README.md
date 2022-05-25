@@ -9,7 +9,7 @@
     <li>Clone the repo</li>
     <li>Put it inside the xampp/htdocs path folder</li>
     <li>Run cmd inside the path of the folder</li>
-    <li>Run the cmd : <strong>composer install</strong></li>
+    <li>Install Composer Dependencies : <strong>composer install</strong></li>
     <li>Install NPM Dependencies : <strong>npm install</strong></li>
     <li>In ps or bash run this cmd :<strong>cp .env.example .env</strong></li>
     <li>Generate an app encryption key: <strong>php artisan key:generate</strong></li>
