@@ -1,6 +1,4 @@
-              -------------------------------------------------------------
--------------- Une application gestion de caisse avec bootstrap et laravel ----------------
-              -------------------------------------------------------------
+-------------- Une application gestion de caisse avec bootstrap et laravel ----------------<br>
 --------------------
 => Setup .env file :
 --------------------
