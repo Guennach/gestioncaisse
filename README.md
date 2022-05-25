@@ -1,5 +1,5 @@
--------------- Une application gestion de caisse avec bootstrap et laravel ----------------<br>
---------------------
+<h1> Une application gestion de caisse avec bootstrap et laravel </h1> br>
+ 
 => Setup .env file :
 --------------------
 1- Database name : gestioncaisse <br>
