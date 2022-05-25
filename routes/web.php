@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,3 +23,5 @@ Route::resource('/caisse', App\Http\Controllers\CaisseController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('edit-caisse/{id}', [App\Http\Controllers\CaisseController::class, 'edit']);
+Route::put('update-caisse/{id}', [App\Http\Controllers\CaisseController::class, 'update']);

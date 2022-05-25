@@ -21,7 +21,8 @@ class CaisseController extends Controller
         if (Auth::check()) {
             $products = DB::table("caisses")->orderByRaw("date desc")->get();
             return view('caisse.index', compact('products') );
-        }
+        }else
+            return view('home');
         
     }
 
@@ -69,6 +70,7 @@ class CaisseController extends Controller
     public function show(Caisse $caisse)
     {
         //
+        return view('caisse.show', compact('caisse') );
     }
 
     /**
@@ -77,9 +79,11 @@ class CaisseController extends Controller
      * @param  \App\Models\Caisse  $caisse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Caisse $caisse)
+    public function edit($id)
     {
         //
+        $caisse = Caisse::find($id);
+        return view('caisse.edit',compact('caisse'));
     }
 
     /**
@@ -89,9 +93,16 @@ class CaisseController extends Controller
      * @param  \App\Models\Caisse  $caisse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Caisse $caisse)
+    public function update(Request $request, $id)
     {
-        //
+        $caisse = Caisse::find($id);
+        $caisse->date = $request->input('date');
+        $caisse->libelle = $request->input('libelle');
+        $caisse->recettes = $request->input('recettes');
+        $caisse->depenses = $request->input('depenses');
+        $caisse->solde = $request->input('solde');
+        $caisse->update();
+        return redirect()->route('caisse.index')->with('success','La transaction est mis à jour avec succès');
     }
 
     /**
@@ -103,5 +114,8 @@ class CaisseController extends Controller
     public function destroy(Caisse $caisse)
     {
         //
+        $caisse->delete();
+
+        return redirect()->route('caisse.index')->with('success','La transaction est supprimée avec succès');
     }
 }

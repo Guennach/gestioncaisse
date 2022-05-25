@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-left">
-                <h2>Les transactions de la caisse</h2>
+                <h2 class="text-center">Les transactions de la caisse</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('caisse.create') }}"> Create New Product</a>
+                <a class="btn btn-outline-primary mb-4" href="{{ route('caisse.create') }}"> Ajouter une transacrtion</a>
             </div>
         </div>
     </div>
@@ -36,9 +36,10 @@
                 print date('d/m/Y', $timestamp );
             ?></td>
             
-            <td>{{ $product->libelle }}</td>
-            <td>{{ $product->recettes }}</td><td>{{ $product->depenses }}</td>
-            <td>{{ $product->solde }}</td>
+            <td >{{ $product->libelle }}</td>
+            <td class="text-success fw-bold">{{ $product->recettes }}</td>
+            <td class="text-success fw-bold">{{ $product->depenses }}</td>
+            <td class="text-success fw-bold">{{ $product->solde }}</td>
 
             <td>
                 <form action="{{ route('caisse.destroy',$product->id) }}" method="POST">
@@ -49,10 +50,10 @@
                 </form>
             </td>
         </tr>
-        <?php $solde_total += $product->solde ?>
+     <?php $solde_total += $product->solde ?>
         @endforeach
 
     </table>
 
-    <h1>{{ $solde_total }}</h1>
+    <h1>Total des solde : {{ $solde_total }}</h1>
 @endsection
