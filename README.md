@@ -9,9 +9,9 @@
     <li>Clone the repo</li>
     <li>Put it inside the xampp/htdocs path folder</li>
     <li>Run cmd inside the path of the folder</li>
-    <li>Run the cmd : composer install</li>
+    <li>Run the cmd : <strong>composer install</strong></li>
     <li>In ps or bash run this cmd : cp .env.example .env</li>
-    <li>Create a database : gestioncaisse as default or you can edit the .env file and set any name you want</li>
-    <li>Run this cmd : php artisan migrate</li>
-    <li>Run this cmd : php artisan serve</li>
+    <li>Create a database : gestioncaisse as default or you can edit the <strong>.env</strong> file and set any name you want</li>
+    <li>Run this cmd : <strong>php artisan migrate</strong></li>
+    <li>Run this cmd : <strong>php artisan serve</strong></li>
 </ol>
