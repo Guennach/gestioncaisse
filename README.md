@@ -16,5 +16,5 @@
     <li>Create a database : gestioncaisse as default or you can edit the <strong>.env</strong> file and set any name you want</li>
     <li>Run this cmd : <strong>php artisan migrate</strong></li>
     <li>Run this cmd : <strong>php artisan serve</strong></li>
-    <li>In the application, you need firstly to create an account in order to access to the application</li>
+    <li>In the application, you need firstly to create an account in order to have access </li>
 </ol>
