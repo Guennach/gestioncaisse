@@ -15,6 +15,7 @@ class CaisseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+  
     public function index()
     {
         //
@@ -25,7 +26,7 @@ class CaisseController extends Controller
             return view('home');
         
     }
-
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -118,4 +119,24 @@ class CaisseController extends Controller
 
         return redirect()->route('caisse.index')->with('success','La transaction est supprimée avec succès');
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function filter(Request $request)
+    {
+        $caisse = $request->all();
+        if($caisse['start_date'] && $caisse['end_date']){
+            $startDate = $caisse['start_date'];
+            $endDate = $caisse['end_date'];
+            $products = DB::table('caisses')->whereBetween(\DB::raw('DATE(date)'), [$startDate, $endDate])->get();
+            return view('caisse.filter',compact('caisse'),compact('products'));
+        }else
+            return redirect(url()->previous())->with('alert','Please provide us with a start and end date to filter !!!!!!');
+    }
+    
+   
 }
